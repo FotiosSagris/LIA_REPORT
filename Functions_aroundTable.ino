@@ -1,5 +1,5 @@
-/* This program uses functions (Forward, Backward, Stop,etc) to control the movement of our robotic car around a table. Each movement
-function sets the motor speed and direction.
+/* This program uses functions (Forward, Backward, Stop,etc) to control the movement of our robotic car around a table using
+Motor A and Motor B on the car. Each movement function sets the motor speed and direction.
 */
 
   void setup() {
@@ -63,7 +63,7 @@ digitalWrite(3,1); // Enable motor driver (STBY)
 }
 
 void LeftForward ( float x){
-  float y = x * 0.5;
+  float y = x * 0.5; // setting the variable Y to half the value of X
 analogWrite(5,x);// Motor A speed = x
 digitalWrite(7,1);// Motor A direction forward
 analogWrite(6,y); // Motor B speed = y
