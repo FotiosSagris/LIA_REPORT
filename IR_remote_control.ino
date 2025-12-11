@@ -1,9 +1,12 @@
+/* This program controls the robotic car using the IR remote. Each IR button triggers a movement function like forward,backward,left,right
+and stop. Also, I have button 1 to increase the speed and button 2 to decrease the speed. The increase and decrease speed is only when 
+the car is stopped. This program uses IR signals, hex values for each button and functions.
+*/
 
-
-#include <IRremote.h>
+#include <IRremote.h> // including the IR remote external library
 
 const int IR_RECEIVE_PIN = 9; // Define the pin connected to the IR receiver
-int x = 50;
+int x = 50; // setting the base speed to 50
 
 void setup() {
   pinMode(5, OUTPUT); // PWMA speed motor A
