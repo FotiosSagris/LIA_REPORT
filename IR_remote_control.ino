@@ -36,11 +36,11 @@ decreaseSpeed();
 
 void Forward(int x) {
   if ( IrReceiver.decodedIRData.decodedRawData == 0xB946FF00){
-  analogWrite(5, x);
-  digitalWrite(7, 1);
-  analogWrite(6, x);
-  digitalWrite(8, 1);
-  digitalWrite(3, 1);
+analogWrite(5,x); // Motor A speed = x
+digitalWrite(7,1); // Motor A direction forward
+analogWrite(6,x);// Motor B speed = x
+digitalWrite(8,1);// Motor B direction forward
+digitalWrite(3,1); // Enable motor driver (STBY)
   }
 }
 
