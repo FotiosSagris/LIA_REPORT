@@ -1,3 +1,9 @@
+/* This program controls the obstacle avoidance mode on the robotic car by using an ultrasonic sensor mounted on a servo motor.
+The robot measures distance in front, to the left, to the right, and decodes how to move. If the path ahead is clear, it moves forward.
+  If blocked, it scans left and right to choose a safe direction. If all directions are blocked, the robot reverses and rotates 
+  180 degrees to escape.
+*/
+
 #include <Servo.h> // include the servo external library
 Servo myServo ; // create servo object
 // definining the ultrasonic trigger pin to pin 13 and ultrasonic echo pin to pin 12
