@@ -1,11 +1,11 @@
 #include <Servo.h> // include the servo external library
 Servo myServo ; // create servo object
-
-#define trigPin 13
+// definining the ultrasonic trigger pin to pin 13 and ultrasonic echo pin to pin 12
+#define trigPin 13 
 #define echoPin 12 
 
-float distance;
-long duration;
+float distance; // variable to store distance
+long duration; // variable to store duratio
 
   void setup() {
   pinMode(5,OUTPUT); // PWMA speed motor A
@@ -13,48 +13,47 @@ long duration;
   pinMode(3,OUTPUT); // Standy
   pinMode(6,OUTPUT); //  PWMB speed motor B
   pinMode(8,OUTPUT); // BIN_1 direction motor B
-  pinMode(echoPin, INPUT); 
-  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT); // setting echopin as an input
+  pinMode(trigPin, OUTPUT); // setting trigger pin as an output
   Serial.begin(9600);
-  myServo.attach(10);
+  myServo.attach(10); // attaching the servo motor to pin 10
   }
 
 
 void loop() {
-    float distance = GetDistance(); // front sensor
+    float distance = GetDistance(); // mesure distance in fron
 
-    if (distance > 35) {
-Forward(75);       // Move forward at speed 50
+    if (distance > 35) { // if front is clear
+Forward(75);       // Move forward at speed 75
 ServoStraight();   // Keep servo straight
     }
     else { // Front blocked
-Stop();
+Stop(); //stop the car
 ServoLeft();       // Check left side
 
 delay(500);        // Small delay to stabilize sensor
 float leftDistance = GetDistance(); // measure left
 
-        if (leftDistance > 35) {
-            ServoStraight();
-            Left(75); // move diagonally left forward
+        if (leftDistance > 35) { // if left clear
+            ServoStraight(); // turn servo straight
+            Left(75); // move left
         }
         else { // Left blocked
             ServoRight();   // Check right side
             delay(500);
             float rightDistance = GetDistance(); // measure right
 
-            if (rightDistance > 35) {
-                ServoStraight();
+            if (rightDistance > 35) { // if right clear
+                ServoStraight(); // move servo straight
                 Right(75); // move diagonally right forward
             }
             else { // All blocked
-                ServoStraight();
+                ServoStraight(); // move sero straight
                 Backward(75);    // Move backward
                 delay(500);
-                // Rotate 180° in place
-                Left(100);
+                Left(100); // Rotate 180° in place
                 delay(1100);     // Adjust timing to rotate 180°
-                Stop();
+                Stop(); //stop the car
             }
         }
     }
@@ -62,28 +61,28 @@ float leftDistance = GetDistance(); // measure left
     delay(1000); // small delay before next loop
 }
 void ServoLeft(){
-  myServo.write(180);
+  myServo.write(180); // rotate servo left means rotate it to 180 degrees
 }
 
 void ServoRight(){
-  myServo.write(0);
+  myServo.write(0); //rotate servo right means rotate it to 0 degrees
 }
 
 void ServoStraight(){
-  myServo.write(90);
+  myServo.write(90); // rotate servo straight means rotate it to 90 degrees
 }
 
 float GetDistance(){
-  digitalWrite(trigPin,LOW);
+  digitalWrite(trigPin,LOW); //make sure trigger is low
 delayMicroseconds(2);
 
-digitalWrite(trigPin, HIGH);
+digitalWrite(trigPin, HIGH); // send ultrasonic pulse
 delayMicroseconds(10);
 
 digitalWrite(trigPin, LOW);
 
-duration = pulseIn (echoPin, HIGH);
-return (duration *0.0343) / 2;
+duration = pulseIn (echoPin, HIGH); //read echo pulse
+return (duration *0.0343) / 2; // return the calculation to get the distance in cm
 }
 
 
