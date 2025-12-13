@@ -1,7 +1,7 @@
-#include <Servo.h>
-Servo myServo ;
+#include <Servo.h> // include the servo external library
+Servo myServo ; // create servo object
 
-#define trigPin 13 
+#define trigPin 13
 #define echoPin 12 
 
 float distance;
