@@ -89,77 +89,77 @@ return (duration *0.0343) / 2;
 
 
 void Forward ( int x) {
-analogWrite(5,x);
-digitalWrite(7,1);
-analogWrite(6,x);
-digitalWrite(8,1);
-digitalWrite(3,1); 
+analogWrite(5,x); // Motor A speed = x
+digitalWrite(7,1); // Motor A direction forward
+analogWrite(6,x);// Motor B speed = x
+digitalWrite(8,1);// Motor B direction forward
+digitalWrite(3,1); // Enable motor driver (STBY)
  }
 
 void Backward ( int x){
-analogWrite(5,x);
-digitalWrite(7,0);
-analogWrite(6,x);
-digitalWrite(8,0);
-digitalWrite(3,1);
+analogWrite(5,x); // Motor A speed = x
+digitalWrite(7,0); // Motor A direction forward
+analogWrite(6,x); // Motor B speed = x
+digitalWrite(8,0); // Motor B direction forward
+digitalWrite(3,1); // Enable motor driver (STBY)
 }
 
 void Left ( int x){
-analogWrite(5,x);
-digitalWrite(7,1);
-analogWrite(6,x);
-digitalWrite(8,0);
-digitalWrite(3,1);
+analogWrite(5,x); // Motor A speed = x
+digitalWrite(7,1); // Motor A direction backward
+analogWrite(6,x); // Motor B speed = x
+digitalWrite(8,0); // Motor B direction backward
+digitalWrite(3,1); // Enable motor driver (STBY)
 }
 
 void Right ( int x){
-analogWrite(5,x);
-digitalWrite(7,0);
-analogWrite(6,x);
-digitalWrite(8,1);
-digitalWrite(3,1);
+analogWrite(5,x); // Motor A speed = x
+digitalWrite(7,0); // Motor A direction backward
+analogWrite(6,x); // Motor B speed = x
+digitalWrite(8,1); // Motor B direction forward
+digitalWrite(3,1); // Enable motor driver (STBY)
 }
 
 void LeftForward ( float x){
-  float y = x * 0.5;
-analogWrite(5,x);
-digitalWrite(7,1);
-analogWrite(6,y);
-digitalWrite(8,1);
-digitalWrite(3,1);
+  float y = x * 0.5; // setting the variable Y to half the value of X
+analogWrite(5,x);// Motor A speed = x
+digitalWrite(7,1);// Motor A direction forward
+analogWrite(6,y); // Motor B speed = y
+digitalWrite(8,1);// Motor B direction forward
+digitalWrite(3,1); // Enable motor driver (STBY)
 }
 
 void LeftBackward ( float x){
   float y = x * 0.5;
-analogWrite(5,x);
-digitalWrite(7,0);
-analogWrite(6,y);
-digitalWrite(8,0);
-digitalWrite(3,1);
+analogWrite(5,x); // Motor A speed = x
+digitalWrite(7,0); // Motor A direction backward
+analogWrite(6,y); // Motor B speed = y
+digitalWrite(8,0);// Motor B direction backward
+digitalWrite(3,1); // Enable motor driver (STBY)
 }
 
 void RightForward ( float x){
   float y = x * 0.5;
-analogWrite(5,y);
-digitalWrite(7,1);
-analogWrite(6,x);
-digitalWrite(8,1);
-digitalWrite(3,1);
+analogWrite(5,y); // Motor A speed = y
+digitalWrite(7,1); // Motor A direction forward
+analogWrite(6,x); // Motor B speed = x
+digitalWrite(8,1); // Motor B direction forward
+digitalWrite(3,1); // Enable motor driver (STBY)
 }
 
 void RightBackward ( float x){
   float y = x * 0.5;
-analogWrite(5,y);
-digitalWrite(7,0);
-analogWrite(6,x);
-digitalWrite(8,0);
-digitalWrite(3,1);
+analogWrite(5,y); // Motor A speed = y
+digitalWrite(7,0); // Motor A direction backward
+analogWrite(6,x); // Motor B speed = x
+digitalWrite(8,0); // Motor B direction backward
+digitalWrite(3,1);// Enable motor driver (STBY)
 }
 
 void Stop (){
-analogWrite(5,0);
-digitalWrite(7,1);
-analogWrite(6,0);
-digitalWrite(8,1);
-digitalWrite(3,1);
-}
+analogWrite(5,0); // Motor A speed = 0
+digitalWrite(7,1);// Direction doesn't matter when speed = 0
+analogWrite(6,0); // Motor B speed = 0
+digitalWrite(8,1); // Direction doesn't matter
+digitalWrite(3,1);// Enable motor driver (STBY)
+} 
